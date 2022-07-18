@@ -14,7 +14,7 @@ This project enables you to execute/schedule Azure SQL Stored procedure using Po
 * Azure Automation Account
 
 ### Components
-* Parent job runbook.
+* Parent job runbook
 * GetDBCredFromKeyVault.ps1 (Child runbook to read DB credentials from KeyVault)
 * ExecuteProcedureGeneric.ps1 (Child runbook to execute stored procedure)
 * SendEmail.ps1 (Child runbook to send email in case of exceptions)
