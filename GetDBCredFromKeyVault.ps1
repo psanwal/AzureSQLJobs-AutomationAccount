@@ -1,4 +1,14 @@
 	$ErrorActionPreference = 'Stop'
+	
+	# Ensures you do not inherit an AzContext in your runbook
+	Disable-AzContextAutosave -Scope Process | Out-Null
+
+	# Connect to Azure with system-assigned managed identity
+	$AzureContext = (Connect-AzAccount -Identity).context
+
+	# set and store context
+	Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext | Out-Null
+
 	try{
 	    $outputMsg = "Trying to fetch value from key vault using Managed Identity"
 		
