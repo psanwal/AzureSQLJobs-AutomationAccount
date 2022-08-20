@@ -15,7 +15,7 @@ try
 	# Calling another child runbook to execute the procedure in Azure SQL DB
 	
 	$procedureExecutionOutput = .\ExecuteProcedureGeneric.ps1 `
-		-procedureName 'usp_ExecJobAccessProfileHistory' `
+		-procedureName 'Stored_Procedure_Name' `
 		-secretValueText $secretValueText
 		
 	$outputMsg = "$outputMsg `n$procedureExecutionOutput"
@@ -23,14 +23,14 @@ try
 }
 catch
 {
-	$outputMsg = "$outputMsg `n$_ `nInside Catch Block in AccessProfileHistory "
+	$outputMsg = "$outputMsg `n$_ `nInside Catch Block in YourJob "
 	$outputMsg = "$outputMsg `nCalling SendEmail Runbook "
 	
 	# Calling SendEmail child runbook in case any exception occured
 	
 	$emailOutPut = .\SendEmail.ps1 `
 		-Body $outputMsg `
-		-Subject 'Failure in AccessProileHistory Job'
+		-Subject 'Failure in YourJob'
 	$outputMsg = "$outputMsg `n$emailOutPut"
 	Write-Output $outputMsg
 	
