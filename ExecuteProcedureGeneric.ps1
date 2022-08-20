@@ -26,7 +26,7 @@
 		
 		# Creating PSCredentials object.
 		
-	    $credObject = New-Object System.Management.Automation.PSCredential ('isfsqladmin', $secStringPassword)
+	    $credObject = New-Object System.Management.Automation.PSCredential ('DB_User_Name', $secStringPassword)
 	    $outputMsg = "$outputMsg `nCalling Stored procedure"
 		
 		# Calling stored procedure
